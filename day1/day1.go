@@ -36,7 +36,7 @@ func exe2(lines []int) (asc int) {
 	return asc
 }
 
-func Exec() {
+func Run() {
 	lineArray, err := util.ReadLinesAsInt(filePath)
 	if err != nil {
 		panic(err)
