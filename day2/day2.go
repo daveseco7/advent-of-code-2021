@@ -11,8 +11,6 @@ import (
 
 const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day2/input1.txt"
 
-// string mapping
-
 type direction string
 
 const (
