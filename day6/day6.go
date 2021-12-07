@@ -3,6 +3,7 @@ package day1
 import (
 	"fmt"
 	"github.com/daveseco7/advent-of-code-2021/util"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -30,7 +31,10 @@ func exe1(lines []string) (counter int) {
 
 	initialState := strings.Split(lines[0], ",")
 	for _, state := range initialState {
-		n, _ := strconv.Atoi(state)
+		n, err := strconv.Atoi(state)
+		if err != nil {
+			log.Fatal("error parsing input. Expected valid number")
+		}
 		s[n]++
 	}
 
