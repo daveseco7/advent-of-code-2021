@@ -1,12 +1,10 @@
-package day1
+package day2
 
 import (
 	"fmt"
 	"log"
 	"strconv"
 	"strings"
-
-	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day2/input1.txt"
@@ -15,8 +13,8 @@ type direction string
 
 const (
 	forward direction = "forward"
-	down              = "down"
-	up                = "up"
+	down    direction = "down"
+	up      direction = "up"
 )
 
 type position struct {
@@ -57,7 +55,7 @@ func parseMoveOperation(line string) (direction, int, error) {
 	return direction(slice[0]), n, nil
 }
 
-func exe1(lines []string) int {
+func exe(lines []string) int {
 	p := position{0, 0, 0}
 
 	for _, l := range lines {
@@ -71,15 +69,4 @@ func exe1(lines []string) int {
 	}
 
 	return p.product()
-}
-
-func Run() {
-	lineArray, err := util.ReadLines(filePath)
-	if err != nil {
-		panic(err)
-	}
-
-	//exe1 1604850
-	//exe2 1685186100
-	fmt.Println(exe1(lineArray))
 }

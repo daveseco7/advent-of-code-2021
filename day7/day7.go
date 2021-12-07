@@ -1,23 +1,16 @@
-package day1
+package day7
 
 import (
-	"fmt"
-	"github.com/daveseco7/advent-of-code-2021/util"
 	"log"
 	"math"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day7/input1.txt"
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
 
 func parseInput(lines []string) (positions []int) {
 	positions = make([]int, 0)
@@ -36,25 +29,11 @@ func parseInput(lines []string) (positions []int) {
 func exe2(lines []string) int {
 	p := parseInput(lines)
 
-	min := p[0]
-	for _, v := range p {
-		if v < min {
-			min = v
-		}
-	}
-
-	max := 0
-	for _, v := range p {
-		if v > max {
-			max = v
-		}
-	}
-
 	minCost := math.MaxInt
-	for i := min; i <= max; i++ {
+	for i := util.Min(p); i <= util.Max(p); i++ {
 		cost := 0
 		for _, v := range p {
-			posDiff := abs(v - i)
+			posDiff := util.Abs(v - i)
 			cost += posDiff * (posDiff + 1) / 2
 		}
 
@@ -75,20 +54,8 @@ func exe1(lines []string) (distance int) {
 
 	median := p[len(p)/2]
 	for _, v := range p {
-		distance += abs(v - median)
+		distance += util.Abs(v - median)
 	}
 
 	return distance
-}
-
-func Run() {
-	lineArray, err := util.ReadLines(filePath)
-	if err != nil {
-		panic(err)
-	}
-
-	//exe1 347509
-	//exe2 98257206
-	fmt.Println(exe1(lineArray))
-	fmt.Println(exe2(lineArray))
 }

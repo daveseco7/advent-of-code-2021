@@ -1,22 +1,15 @@
-package day1
+package day5
 
 import (
 	"fmt"
-	"github.com/daveseco7/advent-of-code-2021/util"
 	"log"
-	"math"
 	"strconv"
 	"strings"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day5/input1.txt"
-
-func getMinMax(a, b int) (min int, max int) {
-	if a > b {
-		return b, a
-	}
-	return a, b
-}
 
 func parseFromCoordinateToInts(coordinate string) (int, int) {
 	s := strings.Split(coordinate, ",")
@@ -34,7 +27,7 @@ func parseFromCoordinateToInts(coordinate string) (int, int) {
 	return x, y
 }
 
-func exe1(lines []string) (counter int) {
+func exe(lines []string) (counter int) {
 	points := make(map[string]int)
 
 	for _, line := range lines {
@@ -44,8 +37,8 @@ func exe1(lines []string) (counter int) {
 		x2, y2 := parseFromCoordinateToInts(pointsInput[1])
 
 		if x1 == x2 || y1 == y2 {
-			x1, x2 = getMinMax(x1, x2)
-			y1, y2 = getMinMax(y1, y2)
+			x1, x2 = util.Min([]int{x1, x2}), util.Max([]int{x1, x2})
+			y1, y2 = util.Min([]int{y1, y2}), util.Max([]int{y1, y2})
 			for x := x1; x < x2+1; x++ {
 				for y := y1; y < y2+1; y++ {
 					points[fmt.Sprintf("(%d,%d)", x, y)]++
@@ -61,9 +54,8 @@ func exe1(lines []string) (counter int) {
 			if y2 > y1 {
 				dy = 1
 			}
-			maxAbs := math.Abs(float64(x2) - float64(x1))
-
-			for i := 0; i < int(maxAbs)+1; i++ {
+			maxAbs := util.Abs(x2 - x1)
+			for i := 0; i < maxAbs+1; i++ {
 				points[fmt.Sprintf("(%d,%d)", x1+i*dx, y1+i*dy)]++
 			}
 		}
@@ -76,15 +68,4 @@ func exe1(lines []string) (counter int) {
 	}
 
 	return counter
-}
-
-func Run() {
-	lineArray, err := util.ReadLines(filePath)
-	if err != nil {
-		panic(err)
-	}
-
-	//exe1 5608
-	//exe2 20299
-	fmt.Println(exe1(lineArray))
 }

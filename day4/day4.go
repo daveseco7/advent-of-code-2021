@@ -1,8 +1,6 @@
-package day1
+package day4
 
 import (
-	"fmt"
-	"github.com/daveseco7/advent-of-code-2021/util"
 	"log"
 	"strconv"
 	"strings"
@@ -11,13 +9,6 @@ import (
 const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day4/input1.txt"
 
 type board [][]int
-
-func (b *board) print() {
-	for _, i := range *b {
-		fmt.Println(i)
-	}
-	fmt.Println()
-}
 
 func (b *board) getScore() int {
 	score := 0
@@ -112,16 +103,4 @@ func exe1(lines []string) int {
 	}
 	// this return should only occur if no board is the winner
 	return -1
-}
-
-func Run() {
-	lineArray, err := util.ReadLines(filePath)
-	if err != nil {
-		panic(err)
-	}
-
-	//exe1 65325
-	//exe2 4624
-	fmt.Println(exe1(lineArray))
-	fmt.Println(exe2(lineArray))
 }

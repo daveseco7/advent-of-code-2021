@@ -1,11 +1,11 @@
-package day1
+package day3
 
 import (
-	"fmt"
-	"github.com/daveseco7/advent-of-code-2021/util"
 	"log"
 	"math"
 	"strconv"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day3/input1.txt"
@@ -123,16 +123,4 @@ func exe1(lines []string) int {
 	epsilon := int(maxUnsignedNumber) - gamma
 
 	return gamma * epsilon
-}
-
-func Run() {
-	lineArray, err := util.ReadLines(filePath)
-	if err != nil {
-		panic(err)
-	}
-
-	//exe1 749376
-	//exe2 2372923
-	fmt.Println(exe1(lineArray))
-	fmt.Println(exe2(lineArray))
 }

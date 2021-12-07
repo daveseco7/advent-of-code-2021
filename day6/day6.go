@@ -1,8 +1,6 @@
-package day1
+package day6
 
 import (
-	"fmt"
-	"github.com/daveseco7/advent-of-code-2021/util"
 	"log"
 	"strconv"
 	"strings"
@@ -26,7 +24,7 @@ func (s *school) incrementDay() {
 	(*s)[8] = zeroValHolder
 }
 
-func exe1(lines []string) (counter int) {
+func exe(lines []string) (counter int) {
 	s := make(school, 10)
 
 	initialState := strings.Split(lines[0], ",")
@@ -47,15 +45,4 @@ func exe1(lines []string) (counter int) {
 	}
 
 	return counter
-}
-
-func Run() {
-	lineArray, err := util.ReadLines(filePath)
-	if err != nil {
-		panic(err)
-	}
-
-	//exe1 353274
-	//exe2 1609314870967
-	fmt.Println(exe1(lineArray))
 }
