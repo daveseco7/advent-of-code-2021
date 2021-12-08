@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day2/input1.txt"
+const filePath = "input1.txt"
 
 type direction string
 

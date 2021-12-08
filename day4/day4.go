@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day4/input1.txt"
+const filePath = "input1.txt"
 
 type board [][]int
 

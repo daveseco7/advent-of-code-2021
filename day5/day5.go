@@ -9,7 +9,7 @@ import (
 	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
-const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day5/input1.txt"
+const filePath = "input1.txt"
 
 func parseFromCoordinateToInts(coordinate string) (int, int) {
 	s := strings.Split(coordinate, ",")

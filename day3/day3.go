@@ -8,7 +8,7 @@ import (
 	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
-const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day3/input1.txt"
+const filePath = "input1.txt"
 
 type counter map[int]int
 

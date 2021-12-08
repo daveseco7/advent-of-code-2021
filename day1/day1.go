@@ -1,6 +1,6 @@
 package day1
 
-const filePath = "/Users/dave/go/src/github.com/daveseco7/advent-of-code-2021/day1/input1.txt"
+const filePath = "input1.txt"
 
 func exe1(lines []int) (asc int) {
 	for i := 0; i < len(lines)-1; i++ {
