@@ -10,7 +10,7 @@ const filePath = "input1.txt"
 type signals []string
 
 func (s *signals) findBaseNumbers() map[string]int {
-	//base numbers are 1, 4, 7, 8
+	// base numbers are 1, 4, 7, 8
 	digitTranslation := make(map[string]int)
 	for _, p := range *s {
 		switch len(p) {
