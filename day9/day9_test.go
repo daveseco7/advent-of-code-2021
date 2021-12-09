@@ -21,7 +21,7 @@ func TestExe1(t *testing.T) {
 }
 
 func TestExe2(t *testing.T) {
-	const expected = 98257206
+	const expected = 1050192
 
 	lineArray, err := util.ReadLines(filePath)
 	if err != nil {
