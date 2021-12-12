@@ -11,19 +11,15 @@ const (
 	End   = "end"
 )
 
-type cave string
-
 func isSmallCave(c string) bool {
-	return strings.ToLower(string(c)) == string(c)
+	return strings.ToLower(c) == c
 }
 
 type path []string
 
 func (p *path) currentPath(cave string) path {
 	currentPath := make(path, 0)
-	for _, v := range *p {
-		currentPath = append(currentPath, v)
-	}
+	currentPath = append(currentPath, *p...)
 	currentPath = append(currentPath, cave)
 
 	return currentPath
@@ -66,9 +62,7 @@ func (p *paths) findAllPaths(canDoubleVisit bool, start, end string, visited pat
 	allPaths := make([]path, 0)
 	for _, v := range visitable {
 		solutions := p.findAllPaths(!isSecondVisit && canDoubleVisit, v, end, currentPath)
-		for _, s := range solutions {
-			allPaths = append(allPaths, s)
-		}
+		allPaths = append(allPaths, solutions...)
 	}
 
 	return allPaths
