@@ -11,6 +11,12 @@ const (
 	End   = "end"
 )
 
+type cave string
+
+func isSmallCave(c string) bool {
+	return strings.ToLower(string(c)) == string(c)
+}
+
 type path []string
 
 func (p *path) currentPath(cave string) path {
@@ -23,6 +29,16 @@ func (p *path) currentPath(cave string) path {
 	return currentPath
 }
 
+func (p *path) contains(c string) bool {
+	for _, i := range *p {
+		if i == c {
+			return true
+		}
+	}
+
+	return false
+}
+
 type paths map[string]path
 
 func (p *paths) findAllPaths(canDoubleVisit bool, start, end string, visited path) []path {
@@ -32,7 +48,7 @@ func (p *paths) findAllPaths(canDoubleVisit bool, start, end string, visited pat
 
 	currentPath := visited.currentPath(start)
 
-	isSecondVisit := strings.ToLower(start) == start && hasBeenVisited(start, visited)
+	isSecondVisit := isSmallCave(start) && visited.contains(start)
 
 	visitable := make([]string, 0)
 	if p, ok := (*p)[start]; ok {
@@ -41,7 +57,7 @@ func (p *paths) findAllPaths(canDoubleVisit bool, start, end string, visited pat
 				continue
 			}
 
-			if strings.ToUpper(v) == v || !hasBeenVisited(v, visited) || (!isSecondVisit && canDoubleVisit) {
+			if !isSmallCave(v) || !visited.contains(v) || (!isSecondVisit && canDoubleVisit) {
 				visitable = append(visitable, v)
 			}
 		}
@@ -56,16 +72,6 @@ func (p *paths) findAllPaths(canDoubleVisit bool, start, end string, visited pat
 	}
 
 	return allPaths
-}
-
-func hasBeenVisited(s string, visited []string) bool {
-	for _, i := range visited {
-		if i == s {
-			return true
-		}
-	}
-
-	return false
 }
 
 func parseInput(lines []string) paths {
