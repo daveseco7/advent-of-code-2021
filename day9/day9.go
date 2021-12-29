@@ -1,9 +1,7 @@
 package day9
 
 import (
-	"log"
 	"sort"
-	"strconv"
 
 	"github.com/daveseco7/advent-of-code-2021/util"
 )
@@ -92,11 +90,7 @@ func parseInput(lines []string) heightmap {
 		intLine := make([]int, 0)
 
 		for _, r := range strLine {
-			n, err := strconv.Atoi(string(r))
-			if err != nil {
-				log.Fatal("invalid number in the puzzle input")
-			}
-
+			n := util.MustAtoi(string(r))
 			intLine = append(intLine, n)
 		}
 		m = append(m, intLine)

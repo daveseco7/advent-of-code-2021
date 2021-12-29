@@ -1,9 +1,9 @@
 package day4
 
 import (
-	"log"
-	"strconv"
 	"strings"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "input1.txt"
@@ -46,10 +46,7 @@ func (b *board) solve(n int) (bool, int) {
 func convertToIntSlice(strNumbers []string) []int {
 	numbers := make([]int, 0)
 	for _, strNum := range strNumbers {
-		n, err := strconv.Atoi(strNum)
-		if err != nil {
-			log.Fatal("error parsing number input")
-		}
+		n := util.MustAtoi(strNum)
 		numbers = append(numbers, n)
 	}
 	return numbers

@@ -2,9 +2,9 @@ package day15
 
 import (
 	"container/heap"
-	"log"
 	"math"
-	"strconv"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "input1.txt"
@@ -41,10 +41,7 @@ func parseInput(lines []string, repeater int) (state, int, int) {
 		for rx := 0; rx < repeater; rx++ {
 			for y := 0; y < len(lines); y++ {
 				for x := 0; x < len(lines[y]); x++ {
-					risk, err := strconv.Atoi(string(lines[y][x]))
-					if err != nil {
-						log.Fatal("invalid number in the input")
-					}
+					risk := util.MustAtoi(string(lines[y][x]))
 
 					c := coordinate{
 						x: x + (rx * len(lines[y])),

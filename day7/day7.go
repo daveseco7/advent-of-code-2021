@@ -1,10 +1,8 @@
 package day7
 
 import (
-	"log"
 	"math"
 	"sort"
-	"strconv"
 	"strings"
 
 	"github.com/daveseco7/advent-of-code-2021/util"
@@ -16,10 +14,7 @@ func parseInput(lines []string) (positions []int) {
 	positions = make([]int, 0)
 	for _, line := range lines {
 		for _, str := range strings.Split(line, ",") {
-			n, err := strconv.Atoi(str)
-			if err != nil {
-				log.Fatal("invalid number in the puzzle input for exe 1")
-			}
+			n := util.MustAtoi(str)
 			positions = append(positions, n)
 		}
 	}

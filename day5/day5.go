@@ -2,8 +2,6 @@ package day5
 
 import (
 	"fmt"
-	"log"
-	"strconv"
 	"strings"
 
 	"github.com/daveseco7/advent-of-code-2021/util"
@@ -14,17 +12,7 @@ const filePath = "input1.txt"
 func parseFromCoordinateToInts(coordinate string) (int, int) {
 	s := strings.Split(coordinate, ",")
 
-	x, err := strconv.Atoi(s[0])
-	if err != nil {
-		log.Fatal("error parsing input string to int")
-	}
-
-	y, err := strconv.Atoi(s[1])
-	if err != nil {
-		log.Fatal("error parsing input string to int")
-	}
-
-	return x, y
+	return util.MustAtoi(s[0]), util.MustAtoi(s[1])
 }
 
 func exe(lines []string) (counter int) {

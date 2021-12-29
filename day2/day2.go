@@ -3,8 +3,9 @@ package day2
 import (
 	"fmt"
 	"log"
-	"strconv"
 	"strings"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "input1.txt"
@@ -47,12 +48,7 @@ func parseMoveOperation(line string) (direction, int, error) {
 	if len(slice) != 2 {
 		return "", 0, fmt.Errorf(" invalid move direction: %s", line)
 	}
-	n, err := strconv.Atoi(slice[1])
-	if err != nil {
-		return "", 0, fmt.Errorf(" invalid move intensity: %s", slice[1])
-	}
-
-	return direction(slice[0]), n, nil
+	return direction(slice[0]), util.MustAtoi(slice[1]), nil
 }
 
 func exe(lines []string) int {

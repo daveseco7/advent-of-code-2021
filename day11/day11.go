@@ -1,8 +1,7 @@
 package day11
 
 import (
-	"log"
-	"strconv"
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "input1.txt"
@@ -74,10 +73,7 @@ func parseInput(lines []string) grid {
 	for _, line := range lines {
 		energyLine := make([]int, 0)
 		for _, r := range line {
-			n, err := strconv.Atoi(string(r))
-			if err != nil {
-				log.Fatal("error parsing input, invalid number")
-			}
+			n := util.MustAtoi(string(r))
 			energyLine = append(energyLine, n)
 		}
 		g = append(g, energyLine)

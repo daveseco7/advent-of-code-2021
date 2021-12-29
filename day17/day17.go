@@ -1,9 +1,7 @@
 package day17
 
 import (
-	"log"
 	"regexp"
-	"strconv"
 
 	"github.com/daveseco7/advent-of-code-2021/util"
 )
@@ -54,28 +52,11 @@ func parseInput(lines []string) target {
 	r := regexp.MustCompile(targetCoordinatesRegex)
 	result := r.FindAllStringSubmatch(lines[0], -1)
 
-	minX, err := strconv.Atoi(result[0][1])
-	if err != nil {
-		log.Fatal(" error parsing target coordinate min x")
-	}
-	maxX, err := strconv.Atoi(result[0][2])
-	if err != nil {
-		log.Fatal(" error parsing target coordinate max x")
-	}
-	minY, err := strconv.Atoi(result[0][3])
-	if err != nil {
-		log.Fatal(" error parsing target coordinate min y")
-	}
-	maxY, err := strconv.Atoi(result[0][4])
-	if err != nil {
-		log.Fatal(" error parsing target coordinate max y")
-	}
-
 	return target{
-		minX: minX,
-		maxX: maxX,
-		minY: minY,
-		maxY: maxY,
+		minX: util.MustAtoi(result[0][1]),
+		maxX: util.MustAtoi(result[0][2]),
+		minY: util.MustAtoi(result[0][3]),
+		maxY: util.MustAtoi(result[0][4]),
 	}
 }
 

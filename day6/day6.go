@@ -1,9 +1,9 @@
 package day6
 
 import (
-	"log"
-	"strconv"
 	"strings"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "input1.txt"
@@ -29,10 +29,7 @@ func exe(lines []string) (counter int) {
 
 	initialState := strings.Split(lines[0], ",")
 	for _, state := range initialState {
-		n, err := strconv.Atoi(state)
-		if err != nil {
-			log.Fatal("error parsing input. Expected valid number")
-		}
+		n := util.MustAtoi(state)
 		s[n]++
 	}
 

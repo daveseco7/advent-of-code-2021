@@ -2,9 +2,9 @@ package day13
 
 import (
 	"fmt"
-	"log"
-	"strconv"
 	"strings"
+
+	"github.com/daveseco7/advent-of-code-2021/util"
 )
 
 const filePath = "input1.txt"
@@ -104,16 +104,10 @@ type instructions struct {
 
 func parseFold(line string) fold {
 	strs := strings.Fields(line)
-
 	s := strings.Split(strs[2], "=")
 
-	n, err := strconv.Atoi(s[1])
-	if err != nil {
-		log.Fatal(" error parsing input: invalid number")
-	}
-
 	return fold{
-		val:  n,
+		val:  util.MustAtoi(s[1]),
 		axis: s[0],
 	}
 }
@@ -121,19 +115,9 @@ func parseFold(line string) fold {
 func parseCoordinate(line string) coordinate {
 	s := strings.Split(line, ",")
 
-	x, err := strconv.Atoi(s[0])
-	if err != nil {
-		log.Fatal(" error parsing input: invalid number")
-	}
-
-	y, err := strconv.Atoi(s[1])
-	if err != nil {
-		log.Fatal(" error parsing input: invalid number")
-	}
-
 	return coordinate{
-		x: x,
-		y: y,
+		x: util.MustAtoi(s[0]),
+		y: util.MustAtoi(s[1]),
 	}
 }
 
