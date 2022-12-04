@@ -1,15 +1,7 @@
-run:
-  build-tags:
-    - blackbox_success
-    - blackbox_failure
-    - integration
-    - unit
-    - acceptance
-
 linters-settings:
   goimports:
     # Separate internal packages from external
-    local-prefixes: github.com/saltpay/settlements-payments-system
+    local-prefixes: github.com/"github.com/daveseco7/advent-of-code-2021
 
 linters:
   # Enable extra linters besides the default ones
